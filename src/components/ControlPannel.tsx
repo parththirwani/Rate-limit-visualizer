@@ -167,6 +167,12 @@ export default function ControlPanel({
           <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
             {selectedAlgo.howItWorks}
           </p>
+          <a
+            href={`/algorithms/${selectedAlgo.id.toLowerCase().replace('_', '-')}`}
+            className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-zinc-900 hover:text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300"
+          >
+            Know more →
+          </a>
         </div>
       )}
     </div>
