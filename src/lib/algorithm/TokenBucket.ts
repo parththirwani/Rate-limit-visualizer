@@ -1,4 +1,4 @@
-import { redis } from "./Redis";
+import { redis } from "../Redis";
 
 const BUCKET_SIZE = 10;
 const REFILL_RATE = 5; 

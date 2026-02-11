@@ -1,8 +1,9 @@
 import { testSchema } from "@/src/schema/test";
 import { NextRequest, NextResponse } from "next/server";
-import { loopFixedRequests } from "../../lib/FixedLimitter";
-import { loopSlidingRequests } from "../../lib/SlidingWindowLimitter";
-import { loopTokenRequests } from "../../lib/TokenBucket";
+
+import { loopTokenRequests } from "../../../lib/algorithm/TokenBucket";
+import { loopFixedRequests } from "@/src/lib/algorithm/FixedLimitter";
+import { loopSlidingRequests } from "@/src/lib/algorithm/SlidingWindowLimitter";
 
 export async function POST(request: NextRequest) {
     try {
