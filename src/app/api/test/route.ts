@@ -1,6 +1,7 @@
 import { testSchema } from "@/src/schema/test";
 import { NextRequest, NextResponse } from "next/server";
 import { loopFixedRequests } from "../../lib/FixedLimitter";
+import { loopSlidingRequests } from "../../lib/SlidingWindowLimitter";
 
 export async function POST(request: NextRequest) {
     try {
@@ -26,8 +27,23 @@ export async function POST(request: NextRequest) {
             });
         }
 
-        
+        if (algorithm === "SLIDING_WINDOW") {
+            const result = await loopSlidingRequests(requests, apiKey);
 
+            return NextResponse.json({
+                algorithm: "SLIDING_WINDOW",
+                ...result
+            });
+        }
+
+        if (algorithm === "TOKEN_BUCKET") {
+            const result = await loopSlidingRequests(requests, apiKey);
+
+            return NextResponse.json({
+                algorithm: "TOKEN_BUCKET",
+                ...result
+            });
+        }
 
     } catch (err) {
         console.log(err);

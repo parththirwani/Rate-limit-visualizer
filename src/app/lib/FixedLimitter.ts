@@ -1,7 +1,7 @@
 import { redis } from "./Redis";
 
 const WINDOW = 60; // seconds
-const LIMIT = 10;
+const LIMIT = 5;
 
 export async function fixedWindowLimiter(apiKey: string) {
     const key = `rate:${apiKey}`;
