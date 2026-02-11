@@ -31,6 +31,20 @@ body {
   background: var(--color-background);
 }
 
+/* Cursor pointer for all interactive elements */
+button,
+a,
+select,
+input[type="range"],
+[role="button"] {
+  cursor: pointer;
+}
+
+button:disabled,
+select:disabled {
+  cursor: not-allowed;
+}
+
 /* Custom slider styling */
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
