@@ -2,6 +2,7 @@ import { testSchema } from "@/src/schema/test";
 import { NextRequest, NextResponse } from "next/server";
 import { loopFixedRequests } from "../../lib/FixedLimitter";
 import { loopSlidingRequests } from "../../lib/SlidingWindowLimitter";
+import { loopTokenRequests } from "../../lib/TokenBucket";
 
 export async function POST(request: NextRequest) {
     try {
@@ -37,7 +38,7 @@ export async function POST(request: NextRequest) {
         }
 
         if (algorithm === "TOKEN_BUCKET") {
-            const result = await loopSlidingRequests(requests, apiKey);
+            const result = await loopTokenRequests(requests, apiKey);
 
             return NextResponse.json({
                 algorithm: "TOKEN_BUCKET",
